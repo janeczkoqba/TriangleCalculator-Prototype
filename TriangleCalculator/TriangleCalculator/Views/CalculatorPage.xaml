@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TriangleCalculator.ViewModels;assembly:TriangleCalculator"
+             xmlns:controls="clr-namespace:TriangleCalculator;assembly:TriangleCalculator"
+             x:Class="TriangleCalculator.Views.CalculatorPage">
+  <ContentPage.BindingContext>
+    <local:TriangleViewModel />
+  </ContentPage.BindingContext>
+  <StackLayout>
+    <Switch IsToggled="{Binding Path=TriangleElements[A].IsEnabled}" IsEnabled="{Binding Path=TriangleElements[A].CanEnableBeToggled}" />
+    <Entry Text="{Binding Path=TriangleElements[A].Value}" IsEnabled="{Binding Path=TriangleElements[A].IsEnabled}" Keyboard="Numeric" />
+    <Switch IsToggled="{Binding Path=TriangleElements[B].IsEnabled}" IsEnabled="{Binding Path=TriangleElements[B].CanEnableBeToggled}" />
+    <Entry Text="{Binding Path=TriangleElements[B].Value}" IsEnabled="{Binding Path=TriangleElements[B].IsEnabled}" Keyboard="Numeric" />
+    <Switch IsToggled="{Binding Path=TriangleElements[C].IsEnabled}" IsEnabled="{Binding Path=TriangleElements[C].CanEnableBeToggled}" />
+    <Entry Text="{Binding Path=TriangleElements[C].Value}" IsEnabled="{Binding Path=TriangleElements[C].IsEnabled}" Keyboard="Numeric" />
+    
+    <Label Text="{Binding Path=TriangleElements[AC].Value}" />
+    <Switch IsToggled="{Binding Path=TriangleElements[AC].IsEnabled}" IsEnabled="{Binding Path=TriangleElements[AC].CanEnableBeToggled}" />
+    <Slider Value="{Binding Path=TriangleElements[AC].Value}" IsEnabled="{Binding Path=TriangleElements[AC].IsEnabled}" Minimum="0.0001" Maximum="89.9999" />
+    
+    <Label Text="{Binding Path=TriangleElements[BC].Value}" />
+    <Switch IsToggled="{Binding Path=TriangleElements[BC].IsEnabled}" IsEnabled="{Binding Path=TriangleElements[BC].CanEnableBeToggled}" />
+    <Slider Value="{Binding Path=TriangleElements[BC].Value}" IsEnabled="{Binding Path=TriangleElements[BC].IsEnabled}" Minimum="0.0001" Maximum="89.9999" />
+    <Button x:Name="redrawButton" Text="Redraw" />
+    
+    <controls:TriangleImageControl x:Name="triangle" Triangle="{Binding Triangle}" HeightRequest="200" HorizontalOptions="Fill" />
+  </StackLayout>
+</ContentPage>
